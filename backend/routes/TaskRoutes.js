@@ -22,4 +22,40 @@ router.post('/new', async (req, res) => {
     }
 });
 
+router.post('/update/progress', async (req, res) => {
+    try {
+        const tasks = await Tasks.updatebyProgess(res.body.data);
+        res.json({ tasks });
+    } catch (error) {
+        res.status(500).json({ error: "New create erro" })
+    }
+});
+
+router.post('/update/title', async (req, res) => {
+    try {
+        const tasks = await Tasks.updatebyTitle(res.body.data);
+        res.json({ tasks });
+    } catch (error) {
+        res.status(500).json({ error: "New create erro" })
+    }
+});
+
+router.post('/update/description', async (req, res) => {
+    try {
+        const tasks = await Tasks.updatebyDescription(res.body.data);
+        res.json({ tasks });
+    } catch (error) {
+        res.status(500).json({ error: "New create erro" })
+    }
+});
+
+router.delete('/remove/:id', async (req, res) => {
+    try {
+        const tasks = await Tasks.removeTask(res.body.data);
+        res.json({ tasks });
+    } catch (error) {
+        res.status(500).json({ error: "New create erro" })
+    }
+});
+
 module.exports = router;
